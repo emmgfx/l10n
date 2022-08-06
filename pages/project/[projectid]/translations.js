@@ -12,7 +12,7 @@ import { getLanguageNativeName } from "../../../utils/languages";
 
 import Button from "../../../components/Button";
 import ProjectNavigation from "../../../components/ProjectNavigation";
-import ModalTranslationNew from "../../../components/modals/ModalTranslationNew";
+import ModalTranslationNew from "../../../components/Modals/ModalTranslationNew";
 import TranslationEditor from "../../../components/SidePanels/TranslationEditor";
 
 import IconPencilOutline from "../../../public/images/icons/pencil-outline.svg";
