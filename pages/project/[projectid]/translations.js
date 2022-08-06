@@ -8,17 +8,16 @@ import {
 } from "@supabase/auth-helpers-nextjs";
 
 import { useModal, MODALS } from "../../../contexts/modal";
+import { getLanguageNativeName } from "../../../utils/languages";
 
 import Button from "../../../components/Button";
 import ProjectNavigation from "../../../components/ProjectNavigation";
 import ModalTranslationNew from "../../../components/modals/ModalTranslationNew";
-import LanguageChip from "../../../components/LanguageChip";
 import TranslationEditor from "../../../components/SidePanels/TranslationEditor";
 
 import IconPencilOutline from "../../../public/images/icons/pencil-outline.svg";
 import IconDotsVertical from "../../../public/images/icons/dots-vertical.svg";
 import KeyEditor from "../../../components/SidePanels/KeyEditor";
-import { getLanguageNativeName } from "../../../utils/languages";
 
 const ProjectDetails = ({ project }) => {
   const { currentModal, setCurrentModal } = useModal();

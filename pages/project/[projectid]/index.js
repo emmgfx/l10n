@@ -7,7 +7,6 @@ import {
 } from "@supabase/auth-helpers-nextjs";
 
 import ProjectNavigation from "../../../components/ProjectNavigation";
-import Flag from "../../../components/Flag";
 import LanguageChip from "../../../components/LanguageChip";
 
 const Project = ({ project }) => {
