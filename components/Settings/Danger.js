@@ -39,8 +39,9 @@ const SettingsDanger = ({ project }) => {
             to recover it or undo the action.
           </p>
           <p className="mb-2 text-sm">
-            To ensure that you don't delete a project by accident, we would
-            request you to write the project name as an intent confirmation.
+            To ensure that you don`&apos;t delete a project by accident, we
+            would request you to write the project name as an intent
+            confirmation.
           </p>
           <Button onClick={deleteProject}>Delete project</Button>
         </Card.Body>

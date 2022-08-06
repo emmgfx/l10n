@@ -49,7 +49,7 @@ const Project = ({ project }) => {
                   <a
                     href={`${baseUrl}/api/project/${project.id}/messages/index.json?secret=${project.secret_key}`}
                     target="_blank"
-                    rel="noopener noreferer"
+                    rel="noreferrer noopener"
                     className="items-center gap-2 bg-emerald-300 inline-flex drop-shadow p-1 rounded-full pr-3"
                   >
                     <LanguageChip arbitray="Index" />
@@ -59,11 +59,11 @@ const Project = ({ project }) => {
                 </li>
 
                 {project.locales.map((iso) => (
-                  <li className="mb-2">
+                  <li className="mb-2" key={iso}>
                     <a
                       href={`${baseUrl}/api/project/${project.id}/messages/${iso}.json?secret=${project.secret_key}`}
                       target="_blank"
-                      rel="noopener noreferer"
+                      rel="noreferrer noopener"
                       className="items-center gap-2 bg-emerald-300 inline-flex drop-shadow p-1 rounded-full pr-3"
                     >
                       <LanguageChip iso={iso} />
