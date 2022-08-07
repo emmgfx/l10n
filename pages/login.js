@@ -6,6 +6,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Label from "../components/Label";
 
 const Login = ({}) => {
   const { user } = useUser();
@@ -42,9 +43,7 @@ const Login = ({}) => {
       <form onSubmit={handleLogin} className="w-96 mx-auto">
         <h1 className="text-xl font-semibold">Sign in</h1>
         <div className="h-2" />
-        <label htmlFor="email" className="font-semibold text-sm">
-          Email address
-        </label>
+        <Label htmlFor="email">Email address</Label>
         <Input
           id="email"
           type="email"
@@ -55,9 +54,7 @@ const Login = ({}) => {
           disabled={loading}
         />
         <div className="h-2" />
-        <label htmlFor="password" className="font-semibold text-sm">
-          Password
-        </label>
+        <Label htmlFor="password">Password</Label>
         <Input
           id="password"
           type="password"

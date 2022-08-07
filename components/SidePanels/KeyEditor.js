@@ -8,6 +8,7 @@ import { useModal } from "../../contexts/modal";
 import Button from "../Button";
 import Input from "../Input";
 import SidePanel from "../SidePanel";
+import Label from "../Label";
 
 const KeyEditor = ({ project, keyword: key, fetchTranslations }) => {
   const [loading, setLoading] = useState(false);
@@ -53,10 +54,13 @@ const KeyEditor = ({ project, keyword: key, fetchTranslations }) => {
         </SidePanel.Header>
         <SidePanel.Content>
           <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
-            <label className="text-xs font-semibold uppercase text-gray-600">
-              New key
-            </label>
-            <Input type="text" {...register("newString")} autoFocus />
+            <Label for="newString">New key</Label>
+            <Input
+              id="newString"
+              type="text"
+              {...register("newString")}
+              autoFocus
+            />
             <div className="h-2" />
             <div className="text-xs">
               Updating key{" "}

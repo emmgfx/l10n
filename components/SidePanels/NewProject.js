@@ -9,6 +9,7 @@ import { isValidLanguage } from "../../utils/languages";
 
 import Button from "../Button";
 import SidePanel from "../SidePanel";
+import Label from "../Label";
 import Input from "../Input";
 
 const NewProject = ({}) => {
@@ -57,10 +58,9 @@ const NewProject = ({}) => {
         <SidePanel.Header>Create new project</SidePanel.Header>
         <SidePanel.Content>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label className="text-xs font-semibold uppercase text-gray-600">
-              Project name
-            </label>
+            <Label htmlFor="name">Project name</Label>
             <Input
+              id="name"
               type="text"
               {...register("name", {
                 required: true,
@@ -72,10 +72,9 @@ const NewProject = ({}) => {
               autoFocus
             />
             <div className="h-2" />
-            <label className="text-xs font-semibold uppercase text-gray-600">
-              Default locale
-            </label>
+            <Label htmlFor="defaultLocale">Default locale</Label>
             <Input
+              id="defaultLocale"
               type="text"
               {...register("defaultLocale", {
                 required: true,
