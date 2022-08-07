@@ -1,8 +1,6 @@
-import { useState } from "react";
+import Router from "next/router";
 import { toast } from "react-toastify";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
-
-import { rnd } from "../../utils/rnd";
 
 import Button from "../Button";
 import Card from "../Card";
@@ -19,13 +17,55 @@ const SettingsDanger = ({ project }) => {
       "To avoid errors, please write the project name to confirm his permanent removal"
     );
 
+  const deleteProjectLocales = async () => {
+    const { error } = await supabaseClient
+      .from("locales")
+      .delete()
+      .match({ project: project.id });
+    return { error };
+  };
+
+  const deleteProjectPermissions = async () => {
+    const { error } = await supabaseClient
+      .from("permissions")
+      .delete()
+      .match({ project_id: project.id });
+    return { error };
+  };
+
   const deleteProject = async () => {
     if (!confirmIntent()) return;
     if (!confirmName()) {
       toast.warning("Invalid name check. Project not removed.");
       return;
     }
-    toast.success("daleee");
+
+    const { error: localesError } = await deleteProjectLocales();
+
+    if (localesError) {
+      toast.error("Error removing locales");
+      return;
+    }
+
+    const { error: permissionsError } = await deleteProjectPermissions();
+
+    if (permissionsError) {
+      toast.error("Error removing permissions");
+      return;
+    }
+
+    const { error: projectError } = await supabaseClient
+      .from("projects")
+      .delete()
+      .match({ id: project.id });
+
+    if (projectError) {
+      toast.error("Error removing project");
+      return;
+    }
+
+    toast.success("Project removed");
+    Router.push("/");
   };
 
   return (

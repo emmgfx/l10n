@@ -7,8 +7,7 @@ import {
   withPageAuth,
 } from "@supabase/auth-helpers-nextjs";
 
-import ProjectNavigation from "/components/ProjectNavigation";
-
+import ProjectNavigation from "../../../components/ProjectNavigation";
 import SettingsGeneral from "../../../components/Settings/General";
 import SettingsNewLocale from "../../../components/Settings/NewLocale";
 import SettingsCurrentLocales from "../../../components/Settings/CurrentLocales";
