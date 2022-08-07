@@ -18,6 +18,8 @@ import TranslationEditor from "../../../components/SidePanels/TranslationEditor"
 import IconPencilOutline from "../../../public/images/icons/pencil-outline.svg";
 import IconDotsVertical from "../../../public/images/icons/dots-vertical.svg";
 import KeyEditor from "../../../components/SidePanels/KeyEditor";
+import PageContainer from "../../../components/PageContainer";
+import PageHeading from "../../../components/PageHeading";
 
 const ProjectDetails = ({ project }) => {
   const { currentModal, setCurrentModal } = useModal();
@@ -45,24 +47,25 @@ const ProjectDetails = ({ project }) => {
       <Head>
         <title>{project.name} translations</title>
       </Head>
-      <div className="container mx-auto p-6">
-        <div className="flex justify-between">
-          <ProjectNavigation id={project.id} />
-          <Button
-            className="grow-0"
-            onClick={() => setCurrentModal(MODALS.NEW_TRANSLATION)}
-          >
-            New translation
-          </Button>
-        </div>
+      <PageContainer>
+        <PageHeading title={`${project.name} translations`}>
+          <div className="flex justify-between">
+            <ProjectNavigation id={project.id} />
+          </div>
+        </PageHeading>
         <div className="h-6" />
 
         <div className="overflow-auto h-fit">
           <table className="relative w-full border-separate border-spacing-1">
             <thead className="">
               <tr>
-                <th className="border border-slate-300 bg-slate-100 font-semibold p-4 rounded-sm text-slate-900 text-left">
-                  Keyword
+                <th className="relative border border-emerald-500 bg-slate-100 font-semibold p-0 rounded-sm text-slate-900 text-left">
+                  <Button
+                    className="absolute top-0 h-full w-full rounded-none"
+                    onClick={() => setCurrentModal(MODALS.NEW_TRANSLATION)}
+                  >
+                    Add key
+                  </Button>
                 </th>
                 {project.locales.map((locale, index) => (
                   <th
@@ -121,7 +124,7 @@ const ProjectDetails = ({ project }) => {
             </tbody>
           </table>
         </div>
-      </div>
+      </PageContainer>
 
       {currentModal === MODALS.NEW_TRANSLATION && (
         <ModalTranslationNew

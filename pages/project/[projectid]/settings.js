@@ -14,6 +14,8 @@ import SettingsNewLocale from "../../../components/Settings/NewLocale";
 import SettingsCurrentLocales from "../../../components/Settings/CurrentLocales";
 import SettingsSecret from "../../../components/Settings/Secret";
 import SettingsDanger from "../../../components/Settings/Danger";
+import PageContainer from "../../../components/PageContainer";
+import PageHeading from "../../../components/PageHeading";
 
 const ProjectDetails = ({ project: _project }) => {
   const [project, setProject] = useState(_project);
@@ -35,8 +37,10 @@ const ProjectDetails = ({ project: _project }) => {
       <Head>
         <title>{project.name} settings</title>
       </Head>
-      <div className="container mx-auto p-6">
-        <ProjectNavigation id={project.id} />
+      <PageContainer>
+        <PageHeading title={`${project.name} settings`}>
+          <ProjectNavigation id={project.id} />
+        </PageHeading>
         <div className="h-6" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <SettingsGeneral project={project} refreshData={refreshData} />
@@ -45,7 +49,7 @@ const ProjectDetails = ({ project: _project }) => {
           <SettingsSecret project={project} refreshData={refreshData} />
           <SettingsDanger project={project} />
         </div>
-      </div>
+      </PageContainer>
     </>
   );
 };

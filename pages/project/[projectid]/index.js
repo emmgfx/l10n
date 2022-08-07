@@ -8,6 +8,8 @@ import {
 
 import ProjectNavigation from "../../../components/ProjectNavigation";
 import LanguageChip from "../../../components/LanguageChip";
+import PageHeading from "../../../components/PageHeading";
+import PageContainer from "../../../components/PageContainer";
 
 const Project = ({ project }) => {
   const [translations, setTranslations] = useState([]);
@@ -32,9 +34,12 @@ const Project = ({ project }) => {
       <Head>
         <title>{project.name} overview</title>
       </Head>
-      <div className="container mx-auto p-6">
-        <ProjectNavigation id={project.id} />
+      <PageContainer>
+        <PageHeading title={`${project.name} overview`}>
+          <ProjectNavigation id={project.id} />
+        </PageHeading>
         <div className="h-6" />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h4 className="text-xl font-semibold">
@@ -96,7 +101,7 @@ const Project = ({ project }) => {
             </ul>
           </div>
         </div>
-      </div>
+      </PageContainer>
     </>
   );
 };
