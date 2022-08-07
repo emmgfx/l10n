@@ -17,7 +17,7 @@ const Input = forwardRef(function Textarea({ className, ...props }, ref) {
         "text-gray-700",
         "shadow-sm",
         "focus:border-emerald-300 focus:ring focus:ring-emerald-200 focus:ring-opacity-50",
-        props.error && "focus:border-red-300 focus:ring focus:ring-red-200"
+        props.error && "border-red-300 focus:border-red-300 focus:ring-red-200"
       )}
     />
   );
