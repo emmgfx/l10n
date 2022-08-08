@@ -1,11 +1,15 @@
+import { useState } from "react";
 import Router from "next/router";
 import { toast } from "react-toastify";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 
 import Button from "../Button";
 import Card from "../Card";
+import ScrollLock from "../ScrollLock";
 
 const SettingsDanger = ({ project }) => {
+  const [deleting, setDeleting] = useState(false);
+
   const confirmIntent = () =>
     window.confirm(
       "Deleting this project would remove all his data. This action is not reversible."
@@ -40,10 +44,13 @@ const SettingsDanger = ({ project }) => {
       return;
     }
 
+    setDeleting(true);
+
     const { error: localesError } = await deleteProjectLocales();
 
     if (localesError) {
       toast.error("Error removing locales");
+      setDeleting(false);
       return;
     }
 
@@ -51,6 +58,7 @@ const SettingsDanger = ({ project }) => {
 
     if (permissionsError) {
       toast.error("Error removing permissions");
+      setDeleting(false);
       return;
     }
 
@@ -61,9 +69,11 @@ const SettingsDanger = ({ project }) => {
 
     if (projectError) {
       toast.error("Error removing project");
+      setDeleting(false);
       return;
     }
 
+    setDeleting(false);
     toast.success("Project removed");
     Router.push("/");
   };
@@ -86,6 +96,7 @@ const SettingsDanger = ({ project }) => {
           <Button onClick={deleteProject}>Delete project</Button>
         </Card.Body>
       </Card>
+      {deleting && <ScrollLock />}
     </>
   );
 };
