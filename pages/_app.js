@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 import { Slide, ToastContainer } from "react-toastify";
 import { UserProvider } from "@supabase/auth-helpers-react";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
@@ -6,10 +7,10 @@ import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { ModalProvider } from "../contexts/modal";
 
 import Header from "../components/header";
+import Footer from "../components/Footer";
 
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/globals.css";
-import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const { push } = useRouter();
@@ -34,6 +35,7 @@ function MyApp({ Component, pageProps }) {
         />
         <Header />
         <Component {...pageProps} />
+        <Footer />
       </ModalProvider>
     </UserProvider>
   );
