@@ -12,7 +12,7 @@ import SidePanel from "../SidePanel";
 import Label from "../Label";
 import Input from "../Input";
 
-const NewProject = ({}) => {
+const NewProject = ({ maxProjects = 0, currentProjects = 0 }) => {
   const {
     register,
     handleSubmit,
@@ -85,11 +85,16 @@ const NewProject = ({}) => {
             />
             <button className="hidden" />
           </form>
+          <div className="h-2" />
+          <p className="text-xs">
+            You currently have {currentProjects} project from a maximum of{" "}
+            {maxProjects}.
+          </p>
         </SidePanel.Content>
         <SidePanel.Footer>
           <Button onClick={onClose}>Cancel</Button>
           <Button onClick={handleSubmit(onSubmit)} disabled={!isValid}>
-            Save
+            Create
           </Button>
         </SidePanel.Footer>
       </SidePanel>

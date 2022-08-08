@@ -11,7 +11,7 @@ import NewProject from "../components/SidePanels/NewProject";
 import PageHeading from "../components/PageHeading";
 import PageContainer from "../components/PageContainer";
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects = [] }) => {
   const { currentModal, setCurrentModal } = useModal();
 
   return (
@@ -27,7 +27,9 @@ const Projects = ({ projects }) => {
           <ProjectItem key={project.id} project={project} />
         ))}
       </div>
-      {currentModal === MODALS.NEW_PROJECT && <NewProject />}
+      {currentModal === MODALS.NEW_PROJECT && (
+        <NewProject maxProjects={2} currentProjects={projects.length} />
+      )}
     </PageContainer>
   );
 };
